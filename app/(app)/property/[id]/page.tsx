@@ -44,7 +44,7 @@ export default async function PropertyPage(props: PageProps<"/property/[id]">) {
   return (
     <div className="mx-auto max-w-7xl px-4 pt-6 md:px-6 md:pt-8">
       <DetailTracker propertyId={p.id} />
-      <Link href="/discover" className="mb-4 inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground">
+      <Link href="/swipe" className="mb-4 inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground">
         <ArrowLeft className="size-4" /> Back to homes
       </Link>
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_380px]">

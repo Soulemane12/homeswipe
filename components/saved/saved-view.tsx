@@ -134,7 +134,7 @@ export function SavedView() {
             <p className="font-display text-2xl">{active === "all" ? "No saved homes yet" : "Nothing in this collection yet"}</p>
             <p className="mt-2 text-sm text-muted-foreground">Tap the heart on any home to save it. Saves are one of the strongest signals HomeSwipe learns from.</p>
             <Button asChild className="mt-5 rounded-full">
-              <Link href="/discover">Discover homes</Link>
+              <Link href="/swipe">Start swiping</Link>
             </Button>
           </div>
         ) : (

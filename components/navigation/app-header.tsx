@@ -14,7 +14,7 @@ export function AppHeader({ judge }: { judge: { policyVersion: number } | null }
   return (
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/75">
       <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-4 md:px-6">
-        <Logo href="/discover" />
+        <Logo href="/swipe" />
         <nav aria-label="Primary" className="ml-4 hidden items-center gap-1 md:flex">
           {DESKTOP_NAV.map((item) => (
             <Link
@@ -50,12 +50,7 @@ export function AppHeader({ judge }: { judge: { policyVersion: number } | null }
               Harness v{judge.policyVersion}
             </Link>
           )}
-          <Button asChild size="lg" className="hidden rounded-full px-4 md:inline-flex">
-            <Link href="/swipe" prefetch={false}>
-              Swipe
-            </Link>
-          </Button>
-          <Link href="/profile" prefetch={false} className="hidden size-9 place-items-center rounded-full bg-secondary text-sm font-medium md:grid" aria-label="Profile">
+          <Link href="/profile" prefetch={false} className="grid size-9 place-items-center rounded-full bg-secondary text-sm font-medium" aria-label="Profile">
             D
           </Link>
         </div>

@@ -28,7 +28,7 @@ export default function LandingPage() {
             <Link href="#how">How it learns</Link>
           </Button>
           <Button asChild className="rounded-full px-4">
-            <Link href="/discover" prefetch={false}>
+            <Link href="/swipe" prefetch={false}>
               Start discovering
             </Link>
           </Button>
@@ -47,7 +47,7 @@ export default function LandingPage() {
             <p className="mt-6 max-w-lg text-lg text-foreground/75">HomeSwipe learns what you actually like and gets better with every home you see.</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg" className="h-12 rounded-full px-6 text-[15px]">
-                <Link href="/discover" prefetch={false}>
+                <Link href="/swipe" prefetch={false}>
                   Start discovering <ArrowRight />
                 </Link>
               </Button>

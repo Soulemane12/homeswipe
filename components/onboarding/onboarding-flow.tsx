@@ -52,7 +52,7 @@ export function OnboardingFlow({ initial, listingTypes }: { initial: { constrain
     setSaving(true);
     try {
       await apiFetch("/api/onboarding", { body: { constraints, explicit: { positive, negative } } });
-      router.push("/discover");
+      router.push("/swipe");
     } catch (e) {
       toast.error((e as Error).message);
       setSaving(false);
