@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { unsplashUrl } from "@/lib/seed/image-library";
 
 const STEPS = [
-  { icon: Hand, title: "Swipe", body: "React to real homes — a like, a pass, a save. Every reaction is a signal, and passive ones count for less." },
+  { icon: Hand, title: "Swipe", body: "React to homes — a like, a pass, a save. Every reaction is a signal, and passive ones count for less." },
   { icon: Brain, title: "Learn", body: "SwipeHome builds your Home DNA: what you love, what you avoid, and what it's still unsure about." },
   { icon: RefreshCcw, title: "Adapt", body: "Before you see each home it predicts your reaction. It grades itself, and changes how it learns you when it's wrong." },
   { icon: Home, title: "Better homes", body: "Recommendations sharpen over time — within the budget and neighborhoods you set, never outside them." },
