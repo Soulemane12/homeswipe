@@ -21,6 +21,7 @@ interface SimulationSummary {
   resolved: number;
   correct: number;
   exhausted: boolean;
+  remainingEligible: number;
 }
 
 export function LabControls({ scope, demoTools, profiles }: { scope: "real" | "simulated" | "combined"; demoTools: boolean; profiles: { key: string; label: string; description: string }[] }) {
@@ -52,7 +53,8 @@ export function LabControls({ scope, demoTools, profiles }: { scope: "real" | "s
     setLast(null);
     try {
       const r = await apiFetch<SimulationSummary>("/api/lab/simulate", { body: { profile, count } });
-      const msg = `${r.recorded} simulated interactions (${r.likes} likes, ${r.dislikes} dislikes) · live predictions ${r.correct}/${r.resolved} correct${r.exhausted ? " · inventory exhausted" : ""}`;
+      const lowInventory = r.remainingEligible < 25 ? ` · only ${r.remainingEligible} unseen homes left in your criteria — more simulation will skew toward dislikes; reset for a clean run` : "";
+      const msg = `${r.recorded} simulated interactions (${r.likes} likes, ${r.dislikes} dislikes) · live predictions ${r.correct}/${r.resolved} correct${r.exhausted ? " · inventory exhausted" : ""}${lowInventory}`;
       setLast(msg);
       toast("Simulation complete", { description: msg });
       router.refresh();

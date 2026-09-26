@@ -20,14 +20,25 @@ const SCOPES: { key: DataScope; label: string }[] = [
   { key: "combined", label: "Combined" },
 ];
 
-function Tile({ label, value, sub }: { label: string; value: React.ReactNode; sub?: React.ReactNode }) {
+function Tile({ label, value, sub, warning }: { label: string; value: React.ReactNode; sub?: React.ReactNode; warning?: string }) {
   return (
     <div className="rounded-2xl border bg-card p-4">
       <p className="text-xs text-muted-foreground">{label}</p>
       <p className="mt-1 text-3xl font-semibold tracking-tight tabular">{value}</p>
       {sub && <p className="mt-1 text-xs text-muted-foreground">{sub}</p>}
+      {warning && <p className="mt-1.5 text-xs font-medium text-nope">⚠ {warning}</p>}
     </div>
   );
+}
+
+/** Raw accuracy is misleading when nearly every outcome is the same (e.g. all dislikes). */
+function oneSidedWarning(likes: number, dislikes: number): string | undefined {
+  const n = likes + dislikes;
+  if (n < 10) return undefined;
+  const share = likes / n;
+  if (share <= 0.1) return `${dislikes} of ${n} outcomes were dislikes — accuracy is inflated; use balanced accuracy.`;
+  if (share >= 0.9) return `${likes} of ${n} outcomes were likes — accuracy is inflated; use balanced accuracy.`;
+  return undefined;
 }
 
 export default async function LabPage(props: PageProps<"/lab">) {
@@ -80,7 +91,12 @@ export default async function LabPage(props: PageProps<"/lab">) {
       <section aria-label="Current harness" className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
         <Tile label="Active harness" value={`v${o.activeVersion}`} sub={`${o.policies.length} versions, ${o.policies.filter((p) => p.status === "rejected").length} rejected`} />
         <Tile label="Interactions" value={o.totals.interactions} sub={`${o.totals.real.interactions} real · ${o.totals.simulated.interactions} simulated`} />
-        <Tile label={`Prediction accuracy (v${o.activeVersion})`} value={m.n > 0 ? pct(m.accuracy) : "—"} sub={m.n > 0 ? `n=${m.n} · 95% CI ${pct(m.accuracyCI.low)}–${pct(m.accuracyCI.high)}` : "No resolved predictions yet"} />
+        <Tile
+          label={`Prediction accuracy (v${o.activeVersion})`}
+          value={m.n > 0 ? pct(m.accuracy) : "—"}
+          sub={m.n > 0 ? `n=${m.n} · 95% CI ${pct(m.accuracyCI.low)}–${pct(m.accuracyCI.high)} · balanced ${pct(m.balancedAccuracy)}` : "No resolved predictions yet"}
+          warning={oneSidedWarning(m.likes, m.dislikes)}
+        />
         <Tile label="Top-3 like rate" value={m.topNCount > 0 ? pct(m.topNLikeRate) : "—"} sub={m.topNCount > 0 ? `n=${m.topNCount} top-ranked` : "—"} />
         <Tile label="Ranking AUC" value={m.n > 0 ? m.auc.toFixed(2) : "—"} sub="0.5 = random" />
         <Tile
@@ -114,6 +130,11 @@ export default async function LabPage(props: PageProps<"/lab">) {
           <p className="mt-1 mb-4 text-xs text-muted-foreground">
             Same-data replay scores every version on the identical latest window — the fair comparison. Live accuracy is confounded by which homes each version happened to show.
           </p>
+          {o.comparison.versions[0] && oneSidedWarning(o.comparison.versions[0].metrics.likes, o.comparison.versions[0].metrics.dislikes) && (
+            <p className="mb-3 text-xs font-medium text-nope">
+              ⚠ The latest window is almost all one outcome, so every version can score near 100% without skill. Compare ranking AUC and balanced accuracy instead.
+            </p>
+          )}
           <AccuracyChart points={points} windowN={o.comparison.window?.n ?? null} />
         </div>
         <div className="space-y-4 rounded-3xl border bg-card p-5">

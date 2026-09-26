@@ -26,6 +26,9 @@ export interface Metrics {
   precision: number;
   recall: number;
   likeRate: number;
+  /** Outcome counts — a window with (almost) only one outcome makes raw accuracy meaningless. */
+  likes: number;
+  dislikes: number;
   predictedPositiveRate: number;
   topNLikeRate: number;
   topNCount: number;
@@ -90,6 +93,8 @@ export function computeMetrics(rows: OutcomeRow[], topN: number = HARNESS_CONFIG
     precision: ratio(tp, tp + fp),
     recall: tpr,
     likeRate: ratio(likes, n),
+    likes,
+    dislikes,
     predictedPositiveRate: ratio(tp + fp, n),
     topNLikeRate: ratio(topLikes, topCount),
     topNCount: topCount,

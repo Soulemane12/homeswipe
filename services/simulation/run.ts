@@ -1,4 +1,5 @@
 import "server-only";
+import { satisfiesHardConstraints } from "@/lib/engine/constraints";
 import { db } from "@/lib/mongodb/collections";
 import { getHiddenProfile, simulateDecision } from "@/lib/simulation/hidden-profiles";
 import { createRng, hashString } from "@/lib/utils/prng";
@@ -16,6 +17,8 @@ export interface SimulationSummary {
   resolved: number;
   correct: number;
   exhausted: boolean;
+  /** Unseen homes still inside the user's criteria — when this runs low, outcomes skew one-sided. */
+  remainingEligible: number;
 }
 
 /**
@@ -30,7 +33,7 @@ export async function simulateInteractions(userId: string, profileKey: string, c
   const catalog = await loadCatalog();
   let step = await c.interactions.countDocuments({ userId, simulated: true, "metadata.hiddenProfile": profile.key });
   const rng = createRng(hashString(`${userId}:${profile.key}:${step}`));
-  const summary: SimulationSummary = { profile: profile.key, requested: count, recorded: 0, likes: 0, dislikes: 0, resolved: 0, correct: 0, exhausted: false };
+  const summary: SimulationSummary = { profile: profile.key, requested: count, recorded: 0, likes: 0, dislikes: 0, resolved: 0, correct: 0, exhausted: false, remainingEligible: 0 };
 
   while (summary.recorded < count) {
     const feed = await getRecommendations(userId, { surface: "swipe", limit: Math.min(5, count - summary.recorded), simulated: true });
@@ -65,5 +68,8 @@ export async function simulateInteractions(userId: string, profileKey: string, c
       if (result.preferenceUpdateDue) await updatePreferences(userId);
     }
   }
+  const user = await c.users.findOne({ _id: userId });
+  const decided = new Set((await c.interactions.distinct("propertyId", { userId, type: { $in: ["like", "dislike", "super_like", "save"] } })).filter(Boolean) as string[]);
+  summary.remainingEligible = user ? catalog.engine.filter((p) => !decided.has(p.id) && satisfiesHardConstraints(p, user.constraints)).length : 0;
   return summary;
 }

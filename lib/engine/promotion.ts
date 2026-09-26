@@ -3,6 +3,7 @@ import type { Metrics } from "./metrics";
 export interface PromotionConfig {
   minResolvedForEvolution: number;
   minHoldoutExamples: number;
+  minHoldoutPerOutcome: number;
   minAccuracyDelta: number;
   maxBalancedAccuracyRegression: number;
   maxTopNLikeRateRegression: number;
@@ -54,6 +55,11 @@ export function decidePromotion(input: {
       name: "enough_holdout",
       passed: candidate.n >= config.minHoldoutExamples,
       detail: `${candidate.n} holdout examples (minimum ${config.minHoldoutExamples})`,
+    },
+    {
+      name: "both_outcomes_in_holdout",
+      passed: candidate.likes >= config.minHoldoutPerOutcome && candidate.dislikes >= config.minHoldoutPerOutcome,
+      detail: `holdout has ${candidate.likes} likes and ${candidate.dislikes} dislikes (need ≥${config.minHoldoutPerOutcome} of each; a one-sided holdout can't show improvement)`,
     },
     {
       name: "accuracy_gain",

@@ -54,3 +54,15 @@ describe("promotion gate", () => {
     expect(splitTrainHoldout(Array.from({ length: 50 }, (_, i) => i), { holdoutFraction: 0.3, minHoldout: 10 }).holdout).toHaveLength(15);
   });
 });
+
+describe("one-sided holdouts", () => {
+  it("never promotes on a holdout that contains only one outcome", () => {
+    const allDislikes = Array.from({ length: 20 }, () => ({ predicted: "DISLIKE", actual: "DISLIKE", score: 0.1 }) as OutcomeRow);
+    const current = computeMetrics(allDislikes.map((r, i) => (i < 5 ? { ...r, predicted: "LIKE" } : r)));
+    const candidate = computeMetrics(allDislikes);
+    expect(candidate.accuracy).toBe(1);
+    const decision = decidePromotion({ totalResolved: 60, current, candidate, paired: { candidateOnlyCorrect: 5, currentOnlyCorrect: 0 }, config });
+    expect(decision.promote).toBe(false);
+    expect(decision.checks.find((c) => c.name === "both_outcomes_in_holdout")?.passed).toBe(false);
+  });
+});

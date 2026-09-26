@@ -14,6 +14,8 @@ export const HARNESS_CONFIG = {
   minResolvedForEvolution: numberFromEnv("HARNESS_MIN_RESOLVED", 30),
   /** Minimum holdout examples; the holdout is the newest max(this, holdoutFraction·n). */
   minHoldoutExamples: numberFromEnv("HARNESS_MIN_HOLDOUT", 10),
+  /** The holdout must include at least this many likes AND dislikes to be a meaningful test. */
+  minHoldoutPerOutcome: 3,
   holdoutFraction: 0.3,
   /** Candidate must beat current holdout accuracy by at least this much. */
   minAccuracyDelta: numberFromEnv("HARNESS_MIN_ACCURACY_DELTA", 0.03),
