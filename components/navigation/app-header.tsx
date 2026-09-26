@@ -38,10 +38,10 @@ export function AppHeader({ judge }: { judge: { policyVersion: number } | null }
             className="hidden h-9 w-64 items-center gap-2 rounded-full border bg-card px-3 text-sm text-muted-foreground transition-colors hover:border-foreground/20 lg:flex"
           >
             <Sparkles className="size-4 text-primary" aria-hidden="true" />
-            <span>Ask HomeSwipe…</span>
+            <span>Ask SwipeHome…</span>
             <kbd className="ml-auto rounded border bg-muted px-1.5 text-[10px] font-medium">⌘K</kbd>
           </button>
-          <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => openCommandBar()} aria-label="Ask HomeSwipe">
+          <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => openCommandBar()} aria-label="Ask SwipeHome">
             <SearchIcon />
           </Button>
           {judge && (

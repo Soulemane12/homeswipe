@@ -14,7 +14,7 @@ export default async function AppLayout({ children }: LayoutProps<"/">) {
   // Everything below reads per-user data from MongoDB at request time — never prerender it.
   await connection();
   if (!env().MONGODB_URI) {
-    return <SetupRequired message="HomeSwipe stores every interaction, prediction, memory and policy version in MongoDB Atlas, so it needs a database connection." />;
+    return <SetupRequired message="SwipeHome stores every interaction, prediction, memory and policy version in MongoDB Atlas, so it needs a database connection." />;
   }
   const judge = await isJudgeMode();
   const policy = judge ? await getActivePolicy(await getCurrentUserId()) : null;

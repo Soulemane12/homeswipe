@@ -1,6 +1,6 @@
-# HomeSwipe architecture
+# SwipeHome architecture
 
-HomeSwipe is a consumer real-estate app wrapped around a **self-improving recommendation
+SwipeHome is a consumer real-estate app wrapped around a **self-improving recommendation
 harness**. The product surfaces (discover, swipe, search, map, saved, compare, Home DNA) produce
 interaction data. The harness predicts, measures, diagnoses and rewrites its own policy.
 

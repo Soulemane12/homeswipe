@@ -1,5 +1,5 @@
 /**
- * Fair-housing guardrail. HomeSwipe personalizes on property attributes, price, user-selected
+ * Fair-housing guardrail. SwipeHome personalizes on property attributes, price, user-selected
  * geography and amenities only. No preference dimension, memory, policy feature weight, or
  * parsed query attribute may describe protected-class traits (race, color, religion, sex,
  * disability, familial status, national origin — plus NYC-protected age, marital status,

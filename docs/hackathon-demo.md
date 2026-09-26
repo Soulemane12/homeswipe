@@ -1,6 +1,6 @@
-# HomeSwipe demo scripts
+# SwipeHome demo scripts
 
-**One line:** HomeSwipe is a self-evolving recommendation harness, with real estate as the
+**One line:** SwipeHome is a self-evolving recommendation harness, with real estate as the
 environment. It predicts your reaction to every home before you see it, grades itself, and
 rewrites how it learns you when it's wrong. Every step lives in MongoDB Atlas.
 
@@ -15,9 +15,9 @@ rewrites how it learns you when it's wrong. Every step lives in MongoDB Atlas.
 
 | Time | Show | Say |
 | --- | --- | --- |
-| 0:00 | Landing → **Start discovering** | "HomeSwipe is a self-evolving recommendation harness using real estate as the environment." |
+| 0:00 | Landing → **Start discovering** | "SwipeHome is a self-evolving recommendation harness using real estate as the environment." |
 | 0:15 | `/swipe`, swipe 5–6 homes (like the bright, modern ones; pass on dark or carpeted ones) | "Every reaction is a signal. Passive ones like opening details count for less." |
-| 0:45 | Turn on judge mode (`?judge=1`), swipe two more | "Before this card appeared, HomeSwipe persisted a prediction (label, raw score, policy version) in MongoDB. The toast shows whether it was right." |
+| 0:45 | Turn on judge mode (`?judge=1`), swipe two more | "Before this card appeared, SwipeHome persisted a prediction (label, raw score, policy version) in MongoDB. The toast shows whether it was right." |
 | 1:05 | `/home-dna` | "What it believes about me, with confidence, and what it's still testing. I can correct it." Set *Balcony → Not important*. |
 | 1:25 | `/lab` (Real scope, or Simulated if pre-warmed) | Point at active version, accuracy with n and CI, top-3 like rate, exploration target. |
 | 1:45 | **Run evolution** | "It replays history under candidate policies, backtests on the newest held-out interactions, and promotes only with a real margin, more paired wins and no regressions." |
@@ -38,7 +38,7 @@ Mention **honesty guarantees** if asked:
 3. (18–28s) Home DNA: "Natural light: very strong · learned", then correct one trait.
 4. (28–45s) `/lab`: run evolution, then show the promoted v2 diff with its evidence and the accuracy chart.
 5. (45–55s) Discover refreshes under v2, showing reasons like "Strong natural light · Hardwood floors."
-6. (55–60s) "Every prediction, memory and policy version lives in MongoDB Atlas. HomeSwipe learns how to learn you."
+6. (55–60s) "Every prediction, memory and policy version lives in MongoDB Atlas. SwipeHome learns how to learn you."
 
 ## Useful commands
 

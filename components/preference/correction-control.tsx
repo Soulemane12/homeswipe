@@ -33,7 +33,7 @@ export function CorrectionControl({ dimension, label, direction, current }: { di
     try {
       await apiFetch("/api/preferences/correct", { body: { corrections: [{ dimension, stance, direction }], sourceSurface: "home_dna" } });
       setOpen(false);
-      toast("Home DNA updated", { description: "Your correction outweighs anything HomeSwipe inferred." });
+      toast("Home DNA updated", { description: "Your correction outweighs anything SwipeHome inferred." });
       router.refresh();
     } catch (e) {
       toast.error((e as Error).message);
@@ -51,7 +51,7 @@ export function CorrectionControl({ dimension, label, direction, current }: { di
       </PopoverTrigger>
       <PopoverContent align="end" className="w-64">
         <p className="text-sm">
-          HomeSwipe thinks you {direction === "positive" ? "care about" : "avoid"} <span className="font-medium">{label.toLowerCase()}</span>.
+          SwipeHome thinks you {direction === "positive" ? "care about" : "avoid"} <span className="font-medium">{label.toLowerCase()}</span>.
         </p>
         <div className="mt-3 grid gap-1.5">
           {options.map((o) => (

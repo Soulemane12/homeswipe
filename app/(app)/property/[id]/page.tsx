@@ -116,7 +116,7 @@ export default async function PropertyPage(props: PageProps<"/property/[id]">) {
                   ))}
                 </ul>
               ) : (
-                <p className="mt-2 text-sm text-muted-foreground">HomeSwipe is still learning your taste — react to a few homes to see personal reasons here.</p>
+                <p className="mt-2 text-sm text-muted-foreground">SwipeHome is still learning your taste — react to a few homes to see personal reasons here.</p>
               )}
               {card.match && card.match.tradeoffs.length > 0 && (
                 <>

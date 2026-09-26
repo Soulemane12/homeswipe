@@ -67,7 +67,7 @@ export async function compareProperties(userId: string, ids: string[], options: 
     const p = properties.find((x) => x.id === id);
     return p ? `the ${p.neighborhood} ${p.bedrooms === 0 ? "studio" : `${p.bedrooms}BR`}` : "";
   };
-  let summary = "Save a few homes and swipe a little more — HomeSwipe needs a clearer picture of your priorities to compare them for you.";
+  let summary = "Save a few homes and swipe a little more — SwipeHome needs a clearer picture of your priorities to compare them for you.";
   if (properties.length >= 2 && bestMatchId) {
     const bestWins = matrix.filter((r) => r.winnerId === bestMatchId).map((r) => (r.direction === "negative" ? `avoiding ${r.label.toLowerCase()}` : r.label.toLowerCase()));
     const cheapest = [...properties].sort((a, b) => a.price - b.price)[0];

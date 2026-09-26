@@ -21,19 +21,19 @@ export default async function ProfilePage() {
 
       <section aria-labelledby="criteria">
         <h2 id="criteria" className="font-display text-3xl">Search criteria</h2>
-        <p className="mt-1 mb-6 text-sm text-muted-foreground">Hard limits. Recommendations never go outside them, and HomeSwipe&apos;s learning can&apos;t change them.</p>
+        <p className="mt-1 mb-6 text-sm text-muted-foreground">Hard limits. Recommendations never go outside them, and SwipeHome&apos;s learning can&apos;t change them.</p>
         <CriteriaForm constraints={user.constraints} explicit={user.explicitPreferences} />
       </section>
 
       <section aria-labelledby="alerts">
         <h2 id="alerts" className="font-display text-3xl">Saved searches &amp; alerts</h2>
-        <p className="mt-1 mb-6 text-sm text-muted-foreground">HomeSwipe tracks new listings and strong matches for each saved search.</p>
+        <p className="mt-1 mb-6 text-sm text-muted-foreground">SwipeHome tracks new listings and strong matches for each saved search.</p>
         <SavedSearches />
       </section>
 
       <section aria-labelledby="judge" className="rounded-3xl border p-6">
         <h2 id="judge" className="text-lg font-semibold">Judge mode</h2>
-        <p className="mt-1 text-sm text-muted-foreground">Shows the predictions HomeSwipe made before each home appeared, the active harness policy, and the lab.</p>
+        <p className="mt-1 text-sm text-muted-foreground">Shows the predictions SwipeHome made before each home appeared, the active harness policy, and the lab.</p>
         <div className="mt-4 flex flex-wrap gap-2">
           <Button asChild variant={judge ? "outline" : "default"} className="rounded-full">
             <Link href={judge ? "/profile?judge=0" : "/profile?judge=1"} prefetch={false}>
@@ -49,9 +49,9 @@ export default async function ProfilePage() {
       </section>
 
       <section aria-labelledby="fair" className="text-sm text-muted-foreground">
-        <h2 id="fair" className="mb-2 font-semibold text-foreground">How HomeSwipe personalizes</h2>
+        <h2 id="fair" className="mb-2 font-semibold text-foreground">How SwipeHome personalizes</h2>
         <p>
-          Recommendations use only the criteria you set, the places you choose, and the physical attributes of homes (light, layout, finishes, amenities). HomeSwipe never infers or uses race, color, religion, sex, disability, familial status or national
+          Recommendations use only the criteria you set, the places you choose, and the physical attributes of homes (light, layout, finishes, amenities). SwipeHome never infers or uses race, color, religion, sex, disability, familial status or national
           origin — or neighborhood demographics as a stand-in for them.
         </p>
       </section>

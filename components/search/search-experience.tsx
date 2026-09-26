@@ -231,7 +231,7 @@ export function SearchExperience({ initialQuery, initialFilters, similarTo, judg
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Save this search</DialogTitle>
-            <DialogDescription>HomeSwipe will track new listings that fit these filters and flag strong matches.</DialogDescription>
+            <DialogDescription>SwipeHome will track new listings that fit these filters and flag strong matches.</DialogDescription>
           </DialogHeader>
           <div className="grid gap-2">
             <Label htmlFor="search-name">Name</Label>

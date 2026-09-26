@@ -1,6 +1,6 @@
-# MongoDB Atlas in HomeSwipe
+# MongoDB Atlas in SwipeHome
 
-MongoDB Atlas is HomeSwipe's system of record *and* its learning substrate. Every
+MongoDB Atlas is SwipeHome's system of record *and* its learning substrate. Every
 interaction, every prediction made before an interaction, every learned memory, every
 evaluation run, every experiment and every policy version is a document in Atlas.
 Retrieval runs on Atlas Vector Search and `$geoNear`.
@@ -43,7 +43,7 @@ Created by `pnpm setup:indexes` (and idempotently by `pnpm seed`), see `lib/mong
 
 ## Atlas Vector Search indexes
 
-HomeSwipe defines **two** vector indexes on `properties`. `pnpm setup:indexes` creates them with
+SwipeHome defines **two** vector indexes on `properties`. `pnpm setup:indexes` creates them with
 `createSearchIndex`, then **polls `listSearchIndexes()` until both report `queryable: true`**
 (5-minute timeout, configurable with `VECTOR_INDEX_TIMEOUT_MS`). Index builds are asynchronous
 on Atlas, so querying before they are queryable would fail.

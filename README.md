@@ -1,8 +1,8 @@
-# HomeSwipe
+# SwipeHome
 
-**HomeSwipe does not only learn what homes a person likes. It learns how the recommendation system itself should learn that person.**
+**SwipeHome does not only learn what homes a person likes. It learns how the recommendation system itself should learn that person.**
 
-HomeSwipe is an AI-native real-estate discovery app for New York City: swipe, search, map, save, compare, and a Home DNA profile of your taste. Underneath is a **recursive recommendation harness**. Before you see each home, it predicts whether you'll like it and persists that prediction. It then grades itself on what you actually do, diagnoses its failures, proposes bounded changes to its own policy, backtests them on held-out history, and promotes a new policy version only when the evidence says it's better. Everything lives in MongoDB Atlas.
+SwipeHome is an AI-native real-estate discovery app for New York City: swipe, search, map, save, compare, and a Home DNA profile of your taste. Underneath is a **recursive recommendation harness**. Before you see each home, it predicts whether you'll like it and persists that prediction. It then grades itself on what you actually do, diagnoses its failures, proposes bounded changes to its own policy, backtests them on held-out history, and promotes a new policy version only when the evidence says it's better. Everything lives in MongoDB Atlas.
 
 > Built for **The Harness Engineering & Model Wrangling Hackathon** (MongoDB).
 > **Primary track: Recursive Harnessing.** The harness evolves its own ranking weights, memory policy, context policy, exploration strategy, retrieval generators, feature importance and prediction threshold through a constrained, versioned, auditable policy system. It never rewrites code.
@@ -142,7 +142,7 @@ Thresholds (`HARNESS_MIN_RESOLVED`, `HARNESS_MIN_HOLDOUT`, `HARNESS_MIN_ACCURACY
 - **Property:** gallery, costs, taxes/HOA, estimated monthly, why-it-matches and tradeoffs, similar homes, collections, compare, and "tell us why".
 - **Saved & collections:** Favorites, Dream Homes (a stronger style signal), Tour, and custom collections.
 - **Compare:** 2–4 homes side by side, plus "compared on what you care about".
-- **Home DNA:** loves and avoids with strength, confidence and source, plus what HomeSwipe is still learning. One-tap corrections are stored as high-confidence explicit evidence.
+- **Home DNA:** loves and avoids with strength, confidence and source, plus what SwipeHome is still learning. One-tap corrections are stored as high-confidence explicit evidence.
 - **Command bar (⌘K):** a natural-language control layer, not a chatbot. Examples: "Find something like this but cheaper", "Keep this style but closer to Manhattan", "I don't dislike this because of the kitchen, I dislike the carpet".
 - **Profile:** hard criteria (never touched by the harness), saved searches and alert settings, judge mode.
 - **`/lab`** (judge view): a Real | Simulated | Combined selector, accuracy with n and CI, top-3 like rate, AUC, calibration, policy history with diffs and evidence, evaluation runs with promotion checks, recent predictions, and controls to run evolution, simulate and reset.
@@ -174,7 +174,7 @@ The core loop stays demonstrable with only a MongoDB URI:
 
 ## Fair housing & safety
 
-- **No protected traits.** HomeSwipe never infers, stores or optimizes on race, color, religion, sex, disability, familial status or national origin. The same goes for NYC-protected age, marital status, gender identity and sexual orientation, and for proxies such as "family-friendly", places of worship, schools as a family proxy, or neighborhood demographics.
+- **No protected traits.** SwipeHome never infers, stores or optimizes on race, color, religion, sex, disability, familial status or national origin. The same goes for NYC-protected age, marital status, gender identity and sexual orientation, and for proxies such as "family-friendly", places of worship, schools as a family proxy, or neighborhood demographics.
 - **Central guardrail.** `lib/guardrails/fair-housing.ts` enforces this on every write path: dimensions, memories, policy feature importance, parser and LLM output, and summaries.
 - **What personalization uses.** User-chosen geography, price, property type, and physical or amenity attributes only.
 - **Hard constraints stay fixed.** They are not part of the tunable policy, so learned behavior can never raise a budget.

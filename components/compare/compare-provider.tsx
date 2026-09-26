@@ -4,7 +4,7 @@ import { createContext, useContext, useMemo, useSyncExternalStore } from "react"
 import { toast } from "sonner";
 import { track } from "@/lib/client/track";
 
-const STORAGE_KEY = "homeswipe.compare";
+const STORAGE_KEY = "swipehome.compare";
 const MAX = 4;
 const EMPTY: string[] = [];
 

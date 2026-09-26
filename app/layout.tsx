@@ -9,8 +9,8 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 const instrument = Instrument_Serif({ variable: "--font-instrument", subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
-  title: { default: "HomeSwipe — homes that learn you", template: "%s · HomeSwipe" },
-  description: "HomeSwipe learns what you actually like in a home — and learns how to learn you better with every home you see.",
+  title: { default: "SwipeHome — homes that learn you", template: "%s · SwipeHome" },
+  description: "SwipeHome learns what you actually like in a home — and learns how to learn you better with every home you see.",
 };
 
 export const viewport: Viewport = {

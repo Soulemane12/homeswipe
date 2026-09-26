@@ -79,7 +79,7 @@ export function SwipeDeck({ judge }: { judge: boolean }) {
       track({ type: decision, propertyId: current.id, impressionId: current.impressionId, dwellMs, photosViewed, sourceSurface: "swipe" })
         .then((res) => {
           swipes.current++;
-          if (res.preferencesUpdating) toast("HomeSwipe updated what it knows about your preferences.", { duration: 2500 });
+          if (res.preferencesUpdating) toast("SwipeHome updated what it knows about your preferences.", { duration: 2500 });
           if (judge && res.resolved) {
             toast(`Predicted ${res.resolved.predictedLabel} · actual ${res.resolved.actualLabel}`, {
               description: res.resolved.correct ? "Prediction correct" : "Prediction missed — logged for the harness",

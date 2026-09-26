@@ -41,7 +41,7 @@ function strengthLabel(v: number): DnaTrait["strengthLabel"] {
   return "Emerging";
 }
 
-/** Consumer-facing view of preference memory: what HomeSwipe believes, how sure it is, and why. */
+/** Consumer-facing view of preference memory: what SwipeHome believes, how sure it is, and why. */
 export async function getHomeDna(userId: string): Promise<HomeDna> {
   const ctx = await getPersonalContext(userId);
   const c = await db();
@@ -92,7 +92,7 @@ export async function getHomeDna(userId: string): Promise<HomeDna> {
     .map((d) => ({ dimension: d.key, label: dimensionLabel(d.key), direction: d.recent > d.longTerm ? ("up" as const) : ("down" as const) }));
 
   return {
-    summary: ctx.user.preferenceProfile?.summary ?? "Swipe through a few homes and HomeSwipe will start describing your taste here.",
+    summary: ctx.user.preferenceProfile?.summary ?? "Swipe through a few homes and SwipeHome will start describing your taste here.",
     positives,
     negatives,
     learning,

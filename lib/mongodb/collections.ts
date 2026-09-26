@@ -45,7 +45,7 @@ export interface Collections {
   conversations: Collection<ConversationDoc>;
 }
 
-/** Typed access to every HomeSwipe collection. */
+/** Typed access to every SwipeHome collection. */
 export async function db(): Promise<Collections> {
   const database = await getDb();
   const c = COLLECTION_NAMES;

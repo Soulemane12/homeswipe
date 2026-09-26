@@ -63,11 +63,11 @@ export function OnboardingFlow({ initial, listingTypes }: { initial: { constrain
   const titles: Record<Step, [string, string]> = {
     transaction: ["Are you buying or renting?", "We'll only show listings of that kind."],
     location: ["Where are you looking?", "Pick one or more boroughs — or search all of NYC."],
-    budget: ["What's your maximum budget?", "This is a hard limit. HomeSwipe will never show you homes above it."],
+    budget: ["What's your maximum budget?", "This is a hard limit. SwipeHome will never show you homes above it."],
     bedrooms: ["How many bedrooms, at minimum?", "Another hard constraint — applied before any personalization."],
     bathrooms: ["And bathrooms?", ""],
     type: ["What kind of home?", "Leave empty to see every type."],
-    preferences: ["Anything you already know you want?", "Optional. HomeSwipe will learn the rest from what you like."],
+    preferences: ["Anything you already know you want?", "Optional. SwipeHome will learn the rest from what you like."],
   };
   const [title, subtitle] = titles[step];
 

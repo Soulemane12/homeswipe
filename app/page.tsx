@@ -7,7 +7,7 @@ import { unsplashUrl } from "@/lib/seed/image-library";
 
 const STEPS = [
   { icon: Hand, title: "Swipe", body: "React to real homes — a like, a pass, a save. Every reaction is a signal, and passive ones count for less." },
-  { icon: Brain, title: "Learn", body: "HomeSwipe builds your Home DNA: what you love, what you avoid, and what it's still unsure about." },
+  { icon: Brain, title: "Learn", body: "SwipeHome builds your Home DNA: what you love, what you avoid, and what it's still unsure about." },
   { icon: RefreshCcw, title: "Adapt", body: "Before you see each home it predicts your reaction. It grades itself, and changes how it learns you when it's wrong." },
   { icon: Home, title: "Better homes", body: "Recommendations sharpen over time — within the budget and neighborhoods you set, never outside them." },
 ];
@@ -44,7 +44,7 @@ export default function LandingPage() {
               <br />
               Start discovering.
             </h1>
-            <p className="mt-6 max-w-lg text-lg text-foreground/75">HomeSwipe learns what you actually like and gets better with every home you see.</p>
+            <p className="mt-6 max-w-lg text-lg text-foreground/75">SwipeHome learns what you actually like and gets better with every home you see.</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg" className="h-12 rounded-full px-6 text-[15px]">
                 <Link href="/swipe" prefetch={false}>

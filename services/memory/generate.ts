@@ -75,8 +75,8 @@ export function generateMemories(input: {
             : dim.explicit.stance === "neutral"
               ? `You said ${noun} is nice but not essential.`
               : positive
-                ? `You told HomeSwipe ${noun} is important.`
-                : `You told HomeSwipe to avoid ${noun}.`
+                ? `You told SwipeHome ${noun} is important.`
+                : `You told SwipeHome to avoid ${noun}.`
           : positive
             ? `You asked for ${noun}.`
             : `You asked to avoid ${noun}.`;

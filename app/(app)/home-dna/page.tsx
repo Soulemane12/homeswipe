@@ -51,7 +51,7 @@ export default async function HomeDnaPage() {
       {empty ? (
         <div className="mt-12 rounded-3xl border p-10 text-center">
           <p className="font-display text-2xl">Nothing learned yet</p>
-          <p className="mt-2 text-sm text-muted-foreground">Swipe through a handful of homes. HomeSwipe updates your Home DNA every few meaningful reactions.</p>
+          <p className="mt-2 text-sm text-muted-foreground">Swipe through a handful of homes. SwipeHome updates your Home DNA every few meaningful reactions.</p>
           <Button asChild className="mt-5 rounded-full">
             <Link href="/swipe">Start swiping</Link>
           </Button>
@@ -86,7 +86,7 @@ export default async function HomeDnaPage() {
           <h2 id="learning" className="flex items-center gap-2 font-display text-2xl">
             <FlaskConical className="size-5 text-primary" aria-hidden="true" /> Still learning
           </h2>
-          <p className="mt-1 text-sm text-muted-foreground">HomeSwipe is deliberately showing you a few homes that vary on these to find out how you feel.</p>
+          <p className="mt-1 text-sm text-muted-foreground">SwipeHome is deliberately showing you a few homes that vary on these to find out how you feel.</p>
           <ul className="mt-4 flex flex-wrap gap-2">
             {dna.learning.map((l) => (
               <li key={l.dimension} className="flex items-center gap-1 rounded-full border bg-background py-1 pr-1 pl-3 text-sm">
@@ -128,7 +128,7 @@ export default async function HomeDnaPage() {
 
       {dna.learnings.length > 0 && (
         <section aria-labelledby="experiments" className="mt-12 border-t pt-8">
-          <h2 id="experiments" className="text-sm font-semibold">What HomeSwipe learned from its experiments</h2>
+          <h2 id="experiments" className="text-sm font-semibold">What SwipeHome learned from its experiments</h2>
           <ul className="mt-3 space-y-2 text-sm text-foreground/80">
             {dna.learnings.map((l) => (
               <li key={l}>{l}</li>

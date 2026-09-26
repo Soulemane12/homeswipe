@@ -119,7 +119,7 @@ export function PropertyActions({ propertyId, saved: initialSaved, collectionIds
         <Button size="icon-lg" variant={reaction === "dislike" ? "secondary" : "ghost"} className="rounded-full" onClick={() => void react("dislike")} disabled={busy !== null} aria-label="Not for me" aria-pressed={reaction === "dislike"}>
           <ThumbsDown className={cn(reaction === "dislike" && "text-nope")} />
         </Button>
-        <Button size="icon-lg" variant="ghost" className="rounded-full" onClick={() => openCommandBar(reaction === "dislike" ? "I don't like this because of the " : "Why do you think I would like this?")} aria-label="Tell HomeSwipe why">
+        <Button size="icon-lg" variant="ghost" className="rounded-full" onClick={() => openCommandBar(reaction === "dislike" ? "I don't like this because of the " : "Why do you think I would like this?")} aria-label="Tell SwipeHome why">
           <MessageSquareText />
         </Button>
       </div>

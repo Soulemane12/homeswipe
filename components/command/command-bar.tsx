@@ -79,8 +79,8 @@ export function CommandBar() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="top-[20%] translate-y-0 gap-0 overflow-hidden p-0 sm:max-w-xl" showCloseButton={false}>
-        <DialogTitle className="sr-only">Ask HomeSwipe</DialogTitle>
-        <DialogDescription className="sr-only">Search, refine recommendations, or correct what HomeSwipe has learned, in plain language.</DialogDescription>
+        <DialogTitle className="sr-only">Ask SwipeHome</DialogTitle>
+        <DialogDescription className="sr-only">Search, refine recommendations, or correct what SwipeHome has learned, in plain language.</DialogDescription>
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -94,7 +94,7 @@ export function CommandBar() {
             autoFocus
             value={text}
             onChange={(e) => setText(e.target.value)}
-            placeholder={propertyId ? "Ask about this home, or refine…" : "Describe a home, or tell HomeSwipe what you like…"}
+            placeholder={propertyId ? "Ask about this home, or refine…" : "Describe a home, or tell SwipeHome what you like…"}
             className="h-14 flex-1 bg-transparent text-[15px] outline-none placeholder:text-muted-foreground"
             aria-label="Command"
             maxLength={300}
