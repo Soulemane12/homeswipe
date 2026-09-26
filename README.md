@@ -129,6 +129,7 @@ Thresholds (`HARNESS_MIN_RESOLVED`, `HARNESS_MIN_HOLDOUT`, `HARNESS_MIN_ACCURACY
 | `pnpm test` | Vitest: engine unit tests + an offline end-to-end harness test |
 | `pnpm typecheck` / `pnpm lint` | Type and lint checks |
 | `pnpm setup` | `seed` + `setup:indexes` + `setup:demo` |
+| `pnpm verify:atlas` | Connection, collection counts, indexes and a live `$vectorSearch` (fails unless retrieval runs on Atlas Vector Search) |
 | `pnpm simulate [profile] [count] [--evolve]` | Simulated interactions through the real pipeline |
 | `pnpm reset:demo [--full]` | Clear the demo user's learned state and restore v1 |
 
@@ -147,6 +148,21 @@ Thresholds (`HARNESS_MIN_RESOLVED`, `HARNESS_MIN_HOLDOUT`, `HARNESS_MIN_ACCURACY
 - **`/lab`** (judge view): a Real | Simulated | Combined selector, accuracy with n and CI, top-3 like rate, AUC, calibration, policy history with diffs and evidence, evaluation runs with promotion checks, recent predictions, and controls to run evolution, simulate and reset.
 
 Demo scripts (3 minutes and 60 seconds): [`docs/hackathon-demo.md`](docs/hackathon-demo.md).
+
+## Deploying to Vercel
+
+Set these in the Vercel project (Production):
+
+| Variable | Value |
+| --- | --- |
+| `MONGODB_URI` | Atlas connection string (required) |
+| `MONGODB_DB_NAME` | `homeswipe` |
+| `DEMO_MODE` | `true` only while demoing: it exposes `/lab` simulate and reset on the public URL |
+| `HARNESS_AUTO_EVOLVE` | `true` |
+| `NEXT_PUBLIC_APP_URL` | the deployment URL |
+| Optional | `VOYAGE_API_KEY`, `OPENAI_API_KEY` / `OPENROUTER_API_KEY`, `NEXT_PUBLIC_MAPBOX_TOKEN` |
+
+Vercel Functions use dynamic egress IPs. In **Atlas → Network Access**, allow `0.0.0.0/0` (typical for a hackathon sandbox) or connect the cluster through the Atlas–Vercel integration. Run `pnpm setup` against the production database once before the first deploy.
 
 ## Fallbacks
 
