@@ -6,7 +6,6 @@ import { pct } from "@/components/lab/format";
 import { LabControls } from "@/components/lab/lab-controls";
 import { PolicyTimeline } from "@/components/lab/policy-timeline";
 import { RunsList } from "@/components/lab/runs-list";
-import { isLabAdmin, labAdminConfigured } from "@/lib/auth/lab-admin";
 import { getCurrentUserId } from "@/lib/auth/session";
 import { cn } from "@/lib/utils";
 import type { DataScope } from "@/models/harness";
@@ -34,8 +33,7 @@ function Tile({ label, value, sub }: { label: string; value: React.ReactNode; su
 export default async function LabPage(props: PageProps<"/lab">) {
   const { scope: rawScope } = await props.searchParams;
   const scope: DataScope = rawScope === "simulated" || rawScope === "combined" ? rawScope : "real";
-  const [o, unlocked] = await Promise.all([getLabOverview(await getCurrentUserId(), scope), isLabAdmin()]);
-  const admin = { configured: labAdminConfigured(), unlocked };
+  const o = await getLabOverview(await getCurrentUserId(), scope);
   const m = o.activeMetrics;
 
   const points: VersionPoint[] = o.live.map((l) => {
@@ -123,7 +121,7 @@ export default async function LabPage(props: PageProps<"/lab">) {
           <p className="text-xs text-muted-foreground">
             Evolution needs ≥{o.config.minResolved} resolved predictions and ≥{o.config.minHoldout} holdout examples, and promotes only with ≥{pct(o.config.minAccuracyDelta)} holdout accuracy gain, more paired wins than losses, and no balanced-accuracy or top-N regression. Auto-evolution runs every {o.config.autoEvolveEvery} new real outcomes.
           </p>
-          <LabControls scope={scope} demoTools={o.flags.demoTools} profiles={o.hiddenProfiles} admin={admin} />
+          <LabControls scope={scope} demoTools={o.flags.demoTools} profiles={o.hiddenProfiles} />
           <dl className="grid grid-cols-2 gap-x-4 gap-y-1 border-t pt-4 font-mono text-[11px] text-muted-foreground">
             <dt>retrieval</dt>
             <dd>{o.retrievalMode ?? "—"}</dd>

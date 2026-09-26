@@ -19,8 +19,6 @@ const EnvSchema = z.object({
   NEXT_PUBLIC_APP_URL: optionalString,
   NEXT_PUBLIC_MAPBOX_TOKEN: optionalString,
   DEMO_MODE: booleanFlag(false),
-  /** Required for destructive /lab actions (reset, simulate, run evolution). Server-only. */
-  DEMO_ADMIN_SECRET: optionalString,
   HARNESS_AUTO_EVOLVE: booleanFlag(true),
   NODE_ENV: z.string().default("development"),
 });
